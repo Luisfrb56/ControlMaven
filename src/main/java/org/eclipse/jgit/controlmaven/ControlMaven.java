@@ -19,9 +19,15 @@ public class ControlMaven {
         */
 Document doc=Jsoup.connect("https://www.accuweather.com/es/es/spain-weather").get();
 
-
+/*
+*Abrir un vinculo para poder elegir lo que deseamos del documeto
+*/
+       connect(doc.title());
+        Elements newsHeadlines = doc.select("#large-temp");
+        for (Element headline : newsHeadlines) {
+            log("%s\n\t%s", headline.attr("title"), headline.absUrl("href"));
         
-    
+        }
     }
     
 }
